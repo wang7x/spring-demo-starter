@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wang7x.demo.repository.DemoRecordRepo">
+    <insert id="add">
+        insert into t_demo_record(
+        record_id,
+        allowance,
+        cumulative_amount
+        ) values (
+        #{recordId},
+        #{allowance},
+        #{cumulativeAmount}
+        )
+    </insert>
+    <update id="update">
+        update t_demo_record
+        set
+        allowance = #{allowance},
+        cumulative_amount = #{cumulativeAmount}
+        where record_id = #{recordId}
+    </update>
+    <delete id="deleteByRecordId">
+        delete from t_demo_record where record_id = #{recordId}
+    </delete>
+    <select id="findByRecordId" resultType="com.wang7x.demo.model.DemoRecord">
+        select * from t_demo_record where record_id = #{recordId}
+    </select>
+    <select id="findByRecordIdWithLock" resultType="com.wang7x.demo.model.DemoRecord">
+        select * from t_demo_record where record_id = #{recordId} for update
+    </select>
+</mapper>

@@ -1,0 +1,16 @@
+target/
+.settings/
+.classpath
+.project
+.mymetadata
+.svn/
+.myeclipse/
+.idea/
+*.iml
+*.iws
+*.ipr
+logs/
+*.log
+*.orig
+out/
+.vscode/

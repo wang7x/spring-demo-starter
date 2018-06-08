@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    - DispatcherServlet application context for web tier.
+-->
+<beans xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 不定义处理器映射，使用默认的BeanNameUrlHandlerMapping
+            和DefaultAnnotationHandlerMapping -->
+    <!-- 开启SpringMVC的注解驱动特性 -->
+    <context:component-scan base-package="com.wang7x.demo.**.controller"/>
+    <!-- 自动扫描注解，并注册为bean -->
+    <mvc:annotation-driven/>
+
+    <!-- serve static resources (*.html, ...) from src/main/webapp/
+        Required when both servlet-mapping is '/' and static resources need to be served -->
+    <mvc:default-servlet-handler/>
+
+    <!--  all resources inside folder src/main/webapp/resources are mapped so they can be refered to inside JSP files
+            (see header.jsp for more details) -->
+    <mvc:resources location="/resources/" mapping="/resources/**"/>
+</beans>
